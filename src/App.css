@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    
+    
+  }
+.wallet-adapter-modal-button-close{
+    display: none;
+}  

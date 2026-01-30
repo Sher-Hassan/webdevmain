@@ -1,0 +1,86 @@
+
+          .btn1-slide {
+            position: relative;
+            overflow: hidden;
+            padding: 0.75rem 2rem; /* Equivalent to px-8 py-3 */
+            border: 2px solid #ffd900; /* Equivalent to border-2 border-yellow-400 */
+    
+            font-weight: 700; /* Equivalent to font-bold */
+            color: #000; /* Equivalent to text-black */
+            background-color: #ffd900; /* Equivalent to bg-yellow-400 */
+            cursor: pointer;
+            
+            /* Base transitions (for focus ring) */
+            transition: box-shadow 0.2s ease-in-out;
+          }
+
+          .btn1-slide:focus {
+            outline: none;
+            /* Simulating focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50 */
+            box-shadow: 0 0 0 2px rgba(253, 224, 71, 0.5); 
+          }
+
+          .btn1-text {
+            position: relative;
+            z-index: 10;
+            display: block;
+            width: 100%;
+            text-align: center;
+            /* We'll animate vertical movement rather than color alone */
+            transition: transform 300ms cubic-bezier(.2,.9,.2,1), color 200ms ease-out;
+          }
+
+          /* New wrapper that contains two stacked text layers */
+          .btn1-text-wrap{
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 1em; /* keeps height predictable for sliding */
+            line-height: 1;
+            overflow: hidden;
+            vertical-align: middle;
+            z-index: 10;
+          }
+
+          .btn1-text--front{
+            transform: translateY(0);
+            color: #000; /* initial text color */
+          }
+
+          .btn1-text--back{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            transform: translateY(100%);
+            color: #ffd900; /* color that should appear when slider covers the button */
+          }
+
+          /* Hover: slide the front text up and bring the back text into place */
+          .btn1-slide:hover .btn1-text--front{
+            transform: translateY(-100%);
+          }
+          .btn1-slide:hover .btn1-text--back{
+            transform: translateY(0);
+          }
+
+          .btn1-bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000; /* Equivalent to bg-black */
+            z-index: 0;
+            
+            /* Start positioned fully below (translate-y-full) */
+            transform: translateY(100%); 
+            
+            /* This transition is for the slide-up effect */
+            transition: transform 300ms ease-out;
+          }
+
+          .btn1-slide:hover .btn1-bg-slider {
+            /* On hover, slide up to cover the button (group-hover:translate-y-0) */
+            transform: translateY(0);
+          }

@@ -1,0 +1,160 @@
+/* Styles for Home-Card component (HC prefix used for all classes) */
+
+.HC-card{
+  position: relative;
+  background-image: url('../assets/card-bg.png');
+  background-size: cover;
+  background-position: right;
+  padding: 28px 15px;
+  color: var(--text-color, #ffd900);
+  overflow: hidden;
+  width: 31.2vw;
+  height: 182px;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.6);
+  font-family: var(--font-family, 'Montserrat', sans-serif);
+  border-top: 1px solid #ffd900;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Faint grid lines that fade from right to left */
+.HC-grid{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* combine vertical and horizontal thin lines */
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 56px 56px, 56px 56px;
+  opacity: 0.9;
+  mix-blend-mode: overlay;
+  /* fade the grid from right (visible) to left (hidden) */
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0) 100%);
+}
+
+.HC-icon{
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.HC-icon img{
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: hue-rotate(0deg) saturate(120%) brightness(120%);
+}
+
+.HC-content{
+  position: relative; /* above the grid */
+  z-index: 2;
+  padding-left: 6px; /* small offset from icon */
+}
+
+.HC-title{
+  margin: 0 0 6px 0;
+  color: var(--text-color, #ffd900);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.HC-sub{
+  margin: 0 0 8px 0;
+  color: rgba(255,217,0,0.9);
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.95;
+  text-transform: none;
+}
+
+.HC-desc{
+  margin: 0;
+  color: rgba(255,217,0,0.85);
+  font-size: 13px;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  max-width: 420px;
+}
+
+/* small layout helpers */
+@media (max-width: 800px){
+  .HC-card{padding: 20px}
+  .HC-title{font-size:18px}
+  .HC-sub{font-size:13px}
+  .HC-desc{font-size:12px}
+}
+
+/* Tight mobile layout for About cards (<=420px) */
+@media (max-width: 800px){
+  .About-cards-row .HC-card{  
+    width: 100% !important;
+    height: auto !important;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 18px; 
+    min-height: 160px;
+    justify-content: flex-start;
+  }
+  .About-cards-row .HC-title{
+    font-size: 28px;
+    line-height: 1.03;
+    margin-bottom: 12px;
+  }
+  .About-cards-row .HC-desc{
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  .About-cards-row .HC-grid{ background-size: 36px 36px, 36px 36px; opacity: 0.9 }
+}
+
+.About-cards-row .HC-card{
+	position: relative;
+  background-image: url('../assets/About-Card-bg.png');
+  background-size: cover;
+  background-position: right;
+  padding: 28px 15px;
+  color: var(--text-color, #ffd900);
+  overflow: hidden;
+  width: 46vw;
+  height: 350px;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.6);
+  font-family: var(--font-family, 'Montserrat', sans-serif);
+  border-top: 1px solid #ffd900;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.About-cards-row .HC-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.About-cards-row .HC-title{
+  margin: 0 0 6px 0;
+  color: var(--text-color, #ffd900);
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.About-cards-row .HC-desc{
+  margin: 0;
+  color: #ffd900;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  max-width: 100%;
+}

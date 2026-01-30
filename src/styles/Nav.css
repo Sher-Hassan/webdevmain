@@ -1,0 +1,222 @@
+/* Top navigation bar styles */
+
+:root{
+	--nav-height: 64px;
+	--nav-bg: #ffd600;
+	--nav-text: #000000;
+}
+
+.nav-wrap{
+	/* floating fixed nav with small gap from top and sides */
+	position: fixed;
+	top: 12px;
+	left: 33px;
+	right: 33px;
+	background: var(--nav-bg);
+	box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+	z-index: 120;
+}
+
+.nav-inner{
+	max-width: 1400px;
+	margin: 0 auto;
+	height: var(--nav-height);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 28px;
+	box-sizing: border-box;
+}
+
+.nav-left{
+	display:flex;
+	align-items:center;
+	gap:12px;
+}
+
+.nav-logo-square{
+	width:18px;
+	height:18px;
+	background:#000;
+	display:inline-block;
+}
+
+.nav-brand{
+	font-family: var(--font-family, 'Montserrat', sans-serif);
+	color: var(--nav-text);
+	font-weight: 500;
+	letter-spacing: 0.06em;
+}
+
+.nav-right{
+	display:flex;
+	align-items:center;
+	gap:20px;
+}
+
+.nav-links{
+	display:flex;
+	gap:28px;
+	list-style:none;
+	margin:0;
+	padding:0;
+	align-items:center;
+}
+
+.nav-link{
+	color: var(--nav-text);
+	text-decoration: none;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+}
+
+.nav-cta{
+	margin-left: 8px;
+}
+
+/* Override Btn2 border color when used inside the nav */
+.nav-cta .Btn2-slide{
+	border: 2px solid #000000; /* black border specifically for nav */
+}
+.nav-link-products{
+    border: 2px solid #000;
+}
+
+/* --- Mobile / Hamburger styles (<=900px) --- */
+.nav-toggle{
+	display: none; /* shown only on small screens */
+	background: #000;
+	border: 3px solid #000;
+	width: 46px;
+	height: 46px;
+	padding: 6px;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	position: relative;
+	flex-direction: column;
+	gap: 4px;
+}
+.nav-toggle:focus{ outline: 2px solid rgba(0,0,0,0.12); }
+.nav-toggle .hamburger-bar{
+	display: block;
+	height: 2px;
+	width: 22px;
+	background: var(--nav-bg);
+	margin: 0;
+	border-radius: 2px;
+	transition: transform 280ms cubic-bezier(.2,.9,.2,1), opacity 220ms linear, background-color 220ms linear;
+	transform-origin: center;
+}
+
+/* Mobile full-screen panel that slides down when open */
+.mobile-panel{
+	/* Keep the panel in the flow so transitions can animate smoothly.
+	   Use visibility + pointer-events to control interactivity instead of display. */
+	position: fixed;
+	left: 16px;
+	right: 16px;
+	top: 12px; /* align with nav gap */
+	background: var(--nav-bg);
+	box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+	z-index: 130;
+	padding: 28px;
+	border: 4px solid #000; /* match heavy framed look */
+	border-radius: 2px;
+	transform-origin: top center;
+	transform: translateY(-12px) scaleY(.995);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	will-change: transform, opacity;
+	transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease, visibility 0s linear 320ms;
+}
+.nav-wrap.open .mobile-panel{
+	transform: translateY(0) scaleY(1);
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease, visibility 0s linear 0s;
+}
+
+.mobile-close{
+	position: absolute;
+	right: 18px;
+	top: 14px;
+	background: #000;
+	color: var(--nav-bg);
+	border: 2px solid #000;
+	width: 44px;
+	height: 44px;
+	font-size: 22px;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+/* --- Hamburger -> Cross animation when nav is open --- */
+.nav-wrap.open .nav-toggle .hamburger-bar:first-child{
+	transform: translateY(6px) rotate(45deg);
+}
+.nav-wrap.open .nav-toggle .hamburger-bar:nth-child(2){
+	opacity: 0;
+	transform: translateX(8px);
+}
+.nav-wrap.open .nav-toggle .hamburger-bar:last-child{
+	transform: translateY(-6px) rotate(-45deg);
+}
+
+/* change toggle background slightly when open for better contrast */
+.nav-wrap.open .nav-toggle{
+	background: #000;
+	border-color: #000;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+	.nav-toggle .hamburger-bar{ transition: none }
+	.mobile-panel{ transition: none }
+}
+
+.mobile-links{ list-style:none; margin: 56px 0 24px; padding:0; display:flex; flex-direction:column; gap:28px; align-items:center; }
+.mobile-links li{ width:100%; display:flex; justify-content:center }
+.mobile-cta{ width:100%; display:flex; justify-content:center; padding-top:8px }
+
+/* Hide regular nav items on small screens */
+@media (max-width: 900px){
+	.nav-toggle{ display:inline-flex }
+	.nav-links{ display: none }
+	.nav-cta{ display: none }
+}
+
+/* Slight adjustments for smallest screens */
+@media (max-width: 420px){
+	.mobile-panel{ left: 8px; right: 8px; padding: 18px }
+	.mobile-close{ right: 12px; top: 10px }
+}
+
+/* Tight mobile nav for small phones (<=420px) */
+@media (max-width: 420px){
+	.nav-wrap{
+		top: 8px;
+		left: 8px;
+		right: 8px;
+	}
+	.nav-inner{
+		height: 48px; /* reduce nav height */
+		padding: 0 12px;
+	}
+	.nav-logo-square{ width: 12px; height: 12px }
+	.nav-brand{ font-size: 13px }
+	.nav-toggle{ width: 40px; height: 40px; padding: 4px }
+	.nav-toggle .hamburger-bar{ width: 18px }
+}
+
+/* small screens: compress spacing */
+@media (max-width: 720px){
+	.nav-inner{padding: 0 12px}
+	.nav-links{gap:12px}
+}

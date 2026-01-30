@@ -1,0 +1,247 @@
+.swap-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: background 260ms ease;
+}
+
+/* Allow clicks to pass through the overlay to modals that render above it (wallet modal). */
+.swap-overlay {
+  pointer-events: none;
+}
+.swap-modal {
+  pointer-events: auto;
+}
+
+.swap-modal {
+  background: linear-gradient(180deg, #070707 0%, #0b0b0b 100%);
+  border-radius: 14px;
+  padding: 22px;
+  width: 420px;
+  max-width: calc(100% - 40px);
+  color: white;
+  /* Use the website's primary font (falls back to system sans-serif) */
+  font-family: var(--font-family, "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  transform: translateY(12px) scale(0.98);
+  opacity: 0;
+  transition: transform 320ms cubic-bezier(.2,.9,.25,1), opacity 260ms ease;
+  border: 2px solid #ffd900;
+}
+
+.swap-overlay.open { background: rgba(0,0,0,0.72); }
+.swap-overlay.open .swap-modal { transform: translateY(0) scale(1); opacity: 1; }
+
+.swap-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: white;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.swap-close:hover { transform: translateY(-2px); background: #512da8}
+
+.swap-header {
+  margin-bottom: 12px;
+}
+
+.swap-title {
+  font-size: 22px;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+
+.swap-sub {
+  margin: 0;
+  color: #bdbdbd;
+  font-size: 13px;
+}
+
+.swap-body {
+  margin-top: 8px;
+}
+
+.wallet-row {
+  margin: 14px 0 18px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.field-label {
+  display: block;
+  font-size: 12px;
+  color: #9a9a9a;
+  margin-bottom: 6px;
+}
+
+.token-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.token-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.03);
+  padding: 8px 10px;
+  border-radius: 8px;
+  min-width: 110px;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.token-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: transform 260ms cubic-bezier(.2,.9,.25,1), background 200ms ease;
+}
+
+.token-name {
+  font-weight: 600;
+}
+
+.token-input {
+  flex: 1;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: white;
+  border-radius: 8px;
+  transition: box-shadow 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+/* Remove native number input arrows so amounts must be typed manually */
+/* Chrome, Safari, Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.token-input:focus { outline: none; box-shadow: 0 6px 18px rgba(75,43,214,0.12); border-color: rgba(75,43,214,0.6); transform: translateY(-1px); }
+
+.token-output {
+  flex: 1;
+  padding: 10px 12px;
+  color: #e6e6e6;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.swap-btn {
+  flex: 1;
+  background: linear-gradient(90deg,#7a46f0,#5b36e3);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+.swap-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.swap-cancel {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #ddd;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.wallet-adapter-modal-button-close{
+    display: none;
+}  
+
+.swap-cancel:hover { background: rgba(255,255,255,0.02); transform: translateY(-2px); }
+
+.swap-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(90,44,230,0.18); }
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.18);
+  border-top-color: white;
+  animation: spin 900ms linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* small token icon float */
+.token-select:hover { transform: translateY(-4px); background: rgba(255,255,255,0.045); box-shadow: 0 8px 18px rgba(11,11,11,0.6); }
+.token-select:active { transform: translateY(-1px); }
+
+.swap-foot { opacity: 0.95; }
+
+.swap-foot {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #8f8f8f;
+}
+
+@media (max-width: 420px) {
+  .swap-modal { width: calc(100% - 32px); padding: 18px; }
+}
+
+/* Ensure the wallet adapter modal appears above our swap modal */
+.wallet-adapter-modal,
+.wallet-adapter-modal *,
+.wallet-adapter-modal .wallet-adapter-modal-content,
+.wallet-adapter-modal .wallet-adapter-overlay {
+  z-index: 20000 !important;
+}
+
+/* Make the inline WalletMultiButton clearly visible inside modal */
+.wallet-adapter-button {
+  z-index: 20001 !important;
+}

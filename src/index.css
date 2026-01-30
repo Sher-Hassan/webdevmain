@@ -1,0 +1,44 @@
+html, body {
+  overflow-x: hidden; /* Hides any content that overflows horizontally */
+  max-width: 100%;    /* Ensures elements do not exceed the viewport width */
+}
+/* Ensure the wallet adapter overlay is visible but does not intercept clicks
+   (so clicking outside won't auto-close the wallet modal). The wallet modal
+   content itself will still accept pointer events so its buttons and close
+   control work as expected. */
+.wallet-adapter-modal-overlay,
+.wallet-adapter-overlay {
+  display: block !important;
+  pointer-events: none !important;
+  background: rgba(0,0,0,0.5) !important;
+  z-index: 20000 !important;
+}
+
+/* Wallet modal content should accept pointer events */
+.wallet-adapter-modal,
+.wallet-adapter-modal .wallet-adapter-modal-content,
+.wallet-adapter-modal .wallet-adapter-modal-wrapper,
+.wallet-adapter-modal * {
+  pointer-events: auto !important;
+  z-index: 20001 !important;
+}
+
+/* Hide the wallet-adapter's built-in close button (top-right X) */
+.wallet-adapter-modal .wallet-adapter-close,
+.wallet-adapter-modal .wallet-adapter-modal-close,
+.wallet-adapter-modal button[aria-label="Close"],
+.wallet-adapter-modal button[title="Close"],
+.wallet-adapter-modal .wallet-adapter-modal-close-button,
+.wallet-adapter-modal .wallet-adapter-modal-close-btn,
+.wallet-adapter-modal .wa-modal__close,
+.wallet-adapter-modal .wa-modal-close,
+.wallet-adapter-modal .modal-close,
+.wallet-adapter-modal .modal-close-btn,
+.wallet-adapter-modal .close,
+.wallet-adapter-modal [class*="close"],
+.wallet-adapter-modal [class*="Close"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
