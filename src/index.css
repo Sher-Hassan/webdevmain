@@ -1,5 +1,4 @@
 html, body {
-  overflow-x: hidden; /* Hides any content that overflows horizontally */
   max-width: 100%;    /* Ensures elements do not exceed the viewport width */
 }
 /* Ensure the wallet adapter overlay is visible but does not intercept clicks
@@ -41,4 +40,5 @@ html, body {
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+
 }
