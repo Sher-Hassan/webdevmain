@@ -159,7 +159,9 @@ export default function Home({ onSwapClick }) {
           </p>
 
           <div className="hero-ctas">
-            <Btn1 text="SWAP" />
+            <div role="button" tabIndex={0} onClick={onSwapClick} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSwapClick(); } }}>
+              <Btn1 text="SWAP" />
+            </div>
             <Btn2 text="ABOUT APP" />
           </div>
         </div>
@@ -355,3 +357,4 @@ export default function Home({ onSwapClick }) {
     </>
   )
 }
+
