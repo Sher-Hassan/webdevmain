@@ -162,7 +162,14 @@ export default function Home({ onSwapClick }) {
             <div role="button" tabIndex={0} onClick={onSwapClick} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSwapClick(); } }}>
               <Btn1 text="SWAP" />
             </div>
-            <Btn2 onClick={() => { const el = document.querySelector('.home-container-2'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} text="ABOUT APP" />
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => { const el = document.querySelector('.home-container-2'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const el = document.querySelector('.home-container-2'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }}
+            >
+              <Btn2 text="ABOUT APP" />
+            </div>
           </div>
         </div>
         <div className="hero-right">
@@ -357,5 +364,6 @@ export default function Home({ onSwapClick }) {
     </>
   )
 }
+
 
 
