@@ -6,6 +6,11 @@
 	--nav-text: #000000;
 }
 
+.nav-brand-img{
+ width: 260px;  
+ padding-top: 5px;
+}
+
 .nav-wrap{
 	/* floating fixed nav with small gap from top and sides */
 	position: fixed;
@@ -220,3 +225,4 @@
 	.nav-inner{padding: 0 12px}
 	.nav-links{gap:12px}
 }
+
