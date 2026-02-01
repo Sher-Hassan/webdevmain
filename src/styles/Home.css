@@ -753,7 +753,7 @@ body::after{
 	gap: 12px;
 	position: relative;
 	overflow: hidden;
-	width: 30vw;
+	width: 28vw;
 	height: 100%;
 }
 .products-item.active{
@@ -1327,3 +1327,4 @@ body::after{
 *::-webkit-scrollbar-thumb:focus, *::-webkit-scrollbar-thumb:active {
 	outline: 2px solid rgba(255,217,0,0.15);
 }
+
