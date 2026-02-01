@@ -1001,9 +1001,9 @@ body::after{
 	.hero-sub{ margin-top: 10px; font-size: 0.92rem; max-width: 100%; padding-left: 0 }
 
 	.hero-ctas{ margin-top: 18px; gap: 14px; flex-direction: column }
-	.hero-ctas > *{ width: 100%; box-sizing: border-box }
+	.hero-ctas > *{ width: 90%; box-sizing: border-box }
 	/* primary CTA visual (Btn1) - ensure it appears as a solid full-width bar */
-	.hero-ctas .Btn1-slide, .hero-ctas .Btn2-slide{ width: 100% }
+	.hero-ctas .Btn1-slide, .hero-ctas .Btn2-slide{ width: 90% }
 	.hero-ctas .Btn1-slide{ padding: 14px 12px }
 	.hero-ctas .Btn2-slide{ padding: 12px 12px }
 
@@ -1327,4 +1327,3 @@ body::after{
 *::-webkit-scrollbar-thumb:focus, *::-webkit-scrollbar-thumb:active {
 	outline: 2px solid rgba(255,217,0,0.15);
 }
-
