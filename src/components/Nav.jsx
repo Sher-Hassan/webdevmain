@@ -11,7 +11,7 @@ export default function Nav({ onSwapClick }){
 			<div className="nav-inner">
 				<div className="nav-left">
 					<span className="nav-logo-square" aria-hidden="true"/>
-					<span className="nav-brand">MYAPP</span>
+					<span className="nav-brand">VeilSwap</span>
 				</div>
 
 				<div className="nav-right">
@@ -63,3 +63,4 @@ export default function Nav({ onSwapClick }){
 		</nav>
 	)
 }
+
