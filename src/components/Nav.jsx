@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Btn2 from './Btn2.jsx'
 import Btn1 from './Btn1.jsx'
+import logo from '../assets/logo-c.png'
 import '../styles/Nav.css'
 
 export default function Nav({ onSwapClick }){
@@ -10,8 +11,8 @@ export default function Nav({ onSwapClick }){
 		<nav className={`nav-wrap ${mobileOpen ? 'open' : ''}`}>
 			<div className="nav-inner">
 				<div className="nav-left">
-					<span className="nav-logo-square" aria-hidden="true"/>
-					<span className="nav-brand">VeilSwap</span>
+					{/* <span className="nav-logo-square" aria-hidden="true"/> */}
+					<span className="nav-brand"><img className='nav-brand-img' src={logo} alt="logo" /></span>
 				</div>
 
 				<div className="nav-right">
@@ -63,4 +64,5 @@ export default function Nav({ onSwapClick }){
 		</nav>
 	)
 }
+
 
